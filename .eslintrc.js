@@ -12,6 +12,10 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
+  // 'import/no-extraneous-dependencies': [
+  //   'error',
+  //   { devDependencies: ['**/*.test.js', '**/*.spec.js'] },
+  // ],
   rules: {
     'import/extensions': 0,
     'react/prop-types': 0,
@@ -42,5 +46,15 @@ module.exports = {
         aspects: ['noHref', 'invalidHref', 'preferButton'],
       },
     ],
+    'no-console': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector: "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        message: 'Unexpected property on console object was called',
+      },
+    ],
+    // allowExpressions: true,
   },
+
 };
